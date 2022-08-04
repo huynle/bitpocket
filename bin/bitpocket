@@ -82,7 +82,9 @@ REMOTE_TMP_DIR="$REMOTE_PATH/$DOT_DIR/tmp"
 HOSTNAME="$(hostname)"
 
 # Don't sync user excluded files
-if [[ -f "$DOT_DIR/exclude" ]]; then
+if [[ -f "$DOT_DIR/../.gitignore" ]]; then
+  user_exclude="--exclude-from $DOT_DIR/../.gitignore"
+elif [[ -f "$DOT_DIR/exclude" ]]; then
   user_exclude="--exclude-from $DOT_DIR/exclude"
 fi
 
